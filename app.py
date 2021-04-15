@@ -1,4 +1,4 @@
-from flask import Flask, g, request, render_template, redirect, abort, make_response
+from flask import Flask, request, render_template, redirect, abort, make_response
 import sqlite3
 import pickle
 import base64
