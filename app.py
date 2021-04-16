@@ -41,27 +41,27 @@ def get_todos():
 # ADD A NEW ITEM TO THE DATABASE
 def add_todo(name):
     with sqlite3.connect(DATABASE) as conn:
-        conn.execute(f"INSERT INTO todos(name) VALUES ('{name}')")
+        conn.executescript(f"INSERT INTO todos(name) VALUES ('{name}');")
         conn.commit()
 
 
 # UPDATE AN EXISTING ITEM IN THE DATABASE
 def update_todo(pk, name):
     with sqlite3.connect(DATABASE) as conn:
-        conn.execute(f"UPDATE todos SET name = '{name}' WHERE id = {pk}")
+        conn.executescript(f"UPDATE todos SET name = '{name}' WHERE id = {pk};")
         conn.commit()
 
 
 # CHECK IF AN ITEM WITH A PROVIDED PRIMARY KEY EXISTS
 def todo_exists(pk):
     with sqlite3.connect(DATABASE) as conn:
-        return conn.execute(f"SELECT * FROM todos WHERE id = {pk}").rowcount
+        return conn.executescript(f"SELECT * FROM todos WHERE id = {pk};").rowcount
 
 
 # DELETE AN ITEM FROM THE DATABASE
 def delete_todo(pk):
     with sqlite3.connect(DATABASE) as conn:
-        conn.execute(f"DELETE FROM todos WHERE id = {pk}")
+        conn.executescript(f"DELETE FROM todos WHERE id = {pk};")
         conn.commit()
 
 
